@@ -99,6 +99,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 		ekf_.x_(1) = ro     * sin(theta);
 		ekf_.x_(2) = ro_dot * cos(theta);
 		ekf_.x_(3) = ro_dot * sin(theta);
+		cout <<"4";
 
     }
 
