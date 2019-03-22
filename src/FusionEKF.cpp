@@ -14,7 +14,7 @@ using std::vector;
 FusionEKF::FusionEKF() {
   is_initialized_ = false;
 
-  previous_timestamp_ = 0;
+  previous_timestamp_ =  1477010443049999;
 
   // initializing matrices
   R_laser_ = MatrixXd(2, 2);
@@ -88,9 +88,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 		}
 		else if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
 			// TODO: Initialize state.
-			float ro = measurement_pack.raw_measurements_(0);
-			float theta = measurement_pack.raw_measurements_(1);
-			float ro_dot = measurement_pack.raw_measurements_(2);
+			double ro = measurement_pack.raw_measurements_(0);
+			double theta = measurement_pack.raw_measurements_(1);
+			double ro_dot = measurement_pack.raw_measurements_(2);
 
 			// Refer : https://www.mathsisfun.com/polar-cartesian-coordinates.html
 
@@ -119,20 +119,20 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 	  */
 
 
-	float dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;	//dt - expressed in seconds
+	double dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;	//dt - expressed in seconds
 	previous_timestamp_ = measurement_pack.timestamp_;
 
 
-	float dt_2 = dt * dt;
-	float dt_3 = dt_2 * dt;
-	float dt_4 = dt_3 * dt;
+	double dt_2 = dt * dt;
+	double dt_3 = dt_2 * dt;
+	double dt_4 = dt_3 * dt;
 
 
 	ekf_.F_(0, 2) = dt;
 	ekf_.F_(1, 3) = dt;
 
-	float noise_ax = 9;
-	float noise_ay = 9;
+	double noise_ax = 9;
+	double noise_ay = 9;
 	ekf_.Q_ = MatrixXd(4, 4);
 	// Take time difference and calculate process co-variance matrix (Chp. 10)
 	ekf_.Q_ << dt_4 / 4 * noise_ax, 0, dt_3 / 2 * noise_ax, 0,

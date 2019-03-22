@@ -55,18 +55,18 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
 	  //recover state parameters
 
 	  // position x,y
-	  float px = x_state(0);
-	  float py = x_state(1);
+	  double px = x_state(0);
+	  double py = x_state(1);
 	  // velocity x,y
-	  float vx = x_state(2);
-	  float vy = x_state(3);
+	  double vx = x_state(2);
+	  double vy = x_state(3);
 
 
-	  float pxSq = px*px;
-	  float pySq = py*py;
-	  float pxSqApySq = pxSq + pySq;
-	  float sqrtpxSqApySq = sqrt(pxSqApySq);
-	  float c3 = (pxSqApySq*sqrtpxSqApySq);
+	  double pxSq = px*px;
+	  double pySq = py*py;
+	  double pxSqApySq = pxSq + pySq;
+	  double sqrtpxSqApySq = sqrt(pxSqApySq);
+	  double c3 = (pxSqApySq*sqrtpxSqApySq);
 
 	  // division by zero
 	  if (fabs(pxSqApySq) < 0.0001){
