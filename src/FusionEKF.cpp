@@ -101,6 +101,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 			ekf_.x_(3) = ro_dot * sin(theta);
 
 		}
+		previous_timestamp_ = measurement_pack.timestamp_;
 
 		// done initializing, no need to predict or update
 		is_initialized_ = true;
