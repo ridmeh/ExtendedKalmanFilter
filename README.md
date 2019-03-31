@@ -29,4 +29,12 @@ Following are helpful notes tht
 2.  LIDAR and RADAR data feeding: RADAR is in polar co-ordinate and need to be converted to cartisean co-ordinate. Also, RADAR data has 3 measurements and you will face issues if wrong # of data points are fed.
 3. Normalization : Just re-iterating what is already a requirement. We need to handle phi > M_PI OR phi < -M_PI
 
+RMSE
+====
 
+The lowest observed RMSE: 
+vx = 0.495963
+vy = 0.413815
+The maximum observed RMSE:
+vx = 4.19994
+vy = 2.07675
